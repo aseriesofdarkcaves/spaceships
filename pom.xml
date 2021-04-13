@@ -8,12 +8,67 @@
     <artifactId>spaceships</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jmonkey.version>3.3.2-stable</jmonkey.version>
+    </properties>
+
+    <repositories>
+        <!-- need this repo to get jme3-testdata -->
+        <repository>
+            <id>bintray-jmonkeyengine-org.jmonkeyengine</id>
+            <name>bintray</name>
+            <url>https://dl.bintray.com/jmonkeyengine/org.jmonkeyengine</url>
+        </repository>
+
+        <!-- other dependencies can be found in this repo -->
+        <repository>
+            <id>jcenter</id>
+            <url>https://jcenter.bintray.com</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>5.8.0-M1</version>
             <scope>test</scope>
+        </dependency>
+
+        <!-- core stuff and common materials -->
+        <dependency>
+            <groupId>org.jmonkeyengine</groupId>
+            <artifactId>jme3-core</artifactId>
+            <version>${jmonkey.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jmonkeyengine</groupId>
+            <artifactId>jme3-desktop</artifactId>
+            <version>${jmonkey.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- Light-Weight Java Game Library -->
+        <dependency>
+            <groupId>org.jmonkeyengine</groupId>
+            <artifactId>jme3-lwjgl</artifactId>
+            <version>${jmonkey.version}</version>
+        </dependency>
+
+        <!-- allows use of the test assets -->
+        <dependency>
+            <groupId>org.jmonkeyengine</groupId>
+            <artifactId>jme3-testdata</artifactId>
+            <version>${jmonkey.version}</version>
+        </dependency>
+
+        <!-- allows use of the plugins, i.e. loading XML etc. -->
+        <dependency>
+            <groupId>org.jmonkeyengine</groupId>
+            <artifactId>jme3-plugins</artifactId>
+            <version>${jmonkey.version}</version>
         </dependency>
     </dependencies>
 
