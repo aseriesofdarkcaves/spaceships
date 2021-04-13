@@ -5,6 +5,7 @@ import com.asodc.spaceships.module.*;
 public class IntrepidClass extends Ship {
     // could move these to Ship
     // but then every Ship would only be able to have one of each of these Modules
+    // also, every time a new module is created it requires a code change to Ship...
     // it would allow some fields to be null if they didn't have that module
     // then Ship would contain the methods for accessing the fields
     // What about client usage?
