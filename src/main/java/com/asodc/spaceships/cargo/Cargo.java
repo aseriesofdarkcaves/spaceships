@@ -1,13 +1,27 @@
 package com.asodc.spaceships.cargo;
 
 public class Cargo {
-    private String name;
+    private Item item;
+    private int amount;
 
-    public Cargo(String name) {
-        this.name = name;
+    public Cargo(Item item, int amount) {
+        this.item = item;
+        this.amount = amount;
     }
 
-    public String getName() {
-        return name;
+    public Item getItem() {
+        return item;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public enum Item {
+        BEANS, CABBAGE, BISCUITS;
     }
 }

@@ -7,7 +7,7 @@ import java.util.List;
 
 public abstract class Ship {
     private String name;
-    private List<Module> modules;
+    protected List<Module> modules;
 
     protected Ship(String name) {
         this.name = name;

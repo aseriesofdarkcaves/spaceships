@@ -27,7 +27,11 @@ public class CargoBay implements Module {
         return currentSize;
     }
 
-    public void addCargo(Cargo cargo) {
+    public void add(Cargo cargo) {
         cargoList.add(cargo);
+    }
+
+    public void remove(Cargo item) {
+        cargoList.remove(item);
     }
 }
