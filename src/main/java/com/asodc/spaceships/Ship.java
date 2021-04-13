@@ -1,44 +1,15 @@
 package com.asodc.spaceships;
 
-import com.asodc.spaceships.module.Module;
+import com.asodc.spaceships.module.ModuleConfiguration;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public abstract class Ship {
-    private String name;
-    protected List<Module> modules;
+public abstract class Ship implements ModularShip {
+    protected String name;
+    protected ModuleConfiguration moduleConfiguration;
 
     protected Ship(String name) {
         this.name = name;
-        this.modules = new ArrayList<>();
-    }
+        this.moduleConfiguration = new ModuleConfiguration();
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<Module> getModules() {
-        return modules;
-    }
-
-    public void setModules(List<Module> modules) {
-        this.modules = modules;
-    }
-
-    protected void addModule(Module module) {
-        modules.add(module);
-    }
-
-    protected void removeModule(Module module) {
-        modules.remove(module);
-    }
-
-    protected void removeAllModules() {
-        modules.clear();
+        initDefaultModuleConfiguration();
     }
 }
