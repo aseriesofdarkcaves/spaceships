@@ -20,8 +20,4 @@ public class Cargo {
     public void setAmount(int amount) {
         this.amount = amount;
     }
-
-    public enum Item {
-        BEANS, CABBAGE, BISCUITS;
-    }
 }
