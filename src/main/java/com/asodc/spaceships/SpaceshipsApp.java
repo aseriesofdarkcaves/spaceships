@@ -1,6 +1,5 @@
 package com.asodc.spaceships;
 
-import com.asodc.spaceships.module.ModuleConfiguration;
 import com.jme3.app.SimpleApplication;
 
 public class SpaceshipsApp extends SimpleApplication {
@@ -17,7 +16,7 @@ public class SpaceshipsApp extends SimpleApplication {
 
     @Override
     public void simpleUpdate(float tpf) {
-        ModuleConfiguration moduleConfiguration = playerShip.getInitialModuleConfiguration();
+        // TODO: update stuff
     }
 
     private void initShip() {

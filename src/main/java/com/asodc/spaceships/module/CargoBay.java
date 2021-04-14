@@ -5,7 +5,7 @@ import com.asodc.spaceships.cargo.Cargo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CargoBay implements Module {
+public class CargoBay extends Module {
     private int capacity;
     private int currentSize;
     private List<Cargo> cargoList;
@@ -27,11 +27,24 @@ public class CargoBay implements Module {
         return currentSize;
     }
 
-    public void add(Cargo cargo) {
-        cargoList.add(cargo);
+    public void add(Cargo item) throws IllegalArgumentException {
+        if (item.getAmount() <= getRemainingSpace()) {
+            currentSize += item.getAmount();
+            cargoList.add(item);
+        } else {
+            String message = String.format("Can't add %d %s to cargo with an available space of %d!",
+                    item.getAmount(), item.getItem().name(), getRemainingSpace());
+            throw new IllegalArgumentException(message);
+        }
     }
 
     public void remove(Cargo item) {
+        // TODO: do we need to check if the item is present before attempting to remove it?
+        currentSize -= item.getAmount();
         cargoList.remove(item);
+    }
+
+    public int getRemainingSpace() {
+        return capacity - currentSize;
     }
 }
