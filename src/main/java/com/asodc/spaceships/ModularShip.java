@@ -4,9 +4,9 @@ import com.asodc.spaceships.module.ModuleConfiguration;
 
 public interface ModularShip {
     /**
-     * Defines the initial {@link ModuleConfiguration} of a {@link Ship}.
+     * Gets the initial default {@link ModuleConfiguration} of a {@link Ship}.
      *
-     * @return the initial {@link ModuleConfiguration}
+     * @return the initial default {@link ModuleConfiguration}
      */
     ModuleConfiguration getInitialModuleConfiguration();
 }
