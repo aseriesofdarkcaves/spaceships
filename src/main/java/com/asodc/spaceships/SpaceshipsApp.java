@@ -14,8 +14,8 @@ public class SpaceshipsApp extends SimpleApplication {
     private static final String COLOR_PROP = "Color";
 
     private static final Quad FLOOR_MESH = new Quad(10f, 20f);
-    private static final Quad PORT_WALL = new Quad(10f, 20f);
-    private static final Quad STARBOARD_WALL = new Quad(10f, 20f);
+    private static final Quad PORT_WALL_MESH = new Quad(20f, 10f);
+    private static final Quad STARBOARD_WALL_MESH = new Quad(20f, 10f);
 
     private static final String PLAYER_ID = "player";
     private static final Vector3f PLAYER_INITIAL_POSITION = new Vector3f(2f, 2f, -2f);
@@ -30,9 +30,14 @@ public class SpaceshipsApp extends SimpleApplication {
 
     @Override
     public void simpleInitApp() {
+        configureFlyCam();
         initShipInterior();
         initPlayer();
         initShip();
+    }
+
+    private void configureFlyCam() {
+        flyCam.setMoveSpeed(10f);
     }
 
     private void initShipInterior() {
@@ -47,16 +52,28 @@ public class SpaceshipsApp extends SimpleApplication {
 
         rootNode.attachChild(floor);
 
-        // walls
-        Material wallMaterial = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
-        wallMaterial.setColor(COLOR_PROP, ColorRGBA.Cyan);
+        // left port wall
+        Material portWallMaterial = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
+        portWallMaterial.setColor(COLOR_PROP, ColorRGBA.Cyan);
 
-        Geometry portWall = new Geometry("portWall", PORT_WALL);
-        portWall.setMaterial(wallMaterial);
+        Geometry portWall = new Geometry("portWall", PORT_WALL_MESH);
+        portWall.setMaterial(portWallMaterial);
         // rotate 90 degrees around the y-axis
         portWall.rotate(0f, FastMath.PI / 2, 0f);
 
         rootNode.attachChild(portWall);
+
+        // right starboard wall
+        Material starboardWallMaterial = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
+        starboardWallMaterial.setColor(COLOR_PROP, ColorRGBA.Green);
+
+        Geometry starboardWall = new Geometry("starboardWall", STARBOARD_WALL_MESH);
+        starboardWall.setMaterial(starboardWallMaterial);
+        // rotate 90 degrees around the y-axis
+        starboardWall.rotate(0f, -FastMath.PI / 2, 0f);
+        starboardWall.setLocalTranslation(10f, 0f, -20f);
+
+        rootNode.attachChild(starboardWall);
 
         // TODO: create ship terminals
     }
