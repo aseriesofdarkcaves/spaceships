@@ -11,8 +11,14 @@ public class SpaceshipsApp extends SimpleApplication {
     private Geometry player;
     private Ship playerShip;
 
+    private static final String COLOR_PROP = "Color";
+
+    private static final Quad FLOOR_MESH = new Quad(10f, 20f);
+    private static final Quad PORT_WALL = new Quad(10f, 20f);
+    private static final Quad STARBOARD_WALL = new Quad(10f, 20f);
+
+    private static final String PLAYER_ID = "player";
     private static final Vector3f PLAYER_INITIAL_POSITION = new Vector3f(2f, 2f, -2f);
-    private static final Quad FLOOR = new Quad(10f, 20f);
 
     private SpaceshipsApp() {
         // don't want multiple instances
@@ -30,30 +36,38 @@ public class SpaceshipsApp extends SimpleApplication {
     }
 
     private void initShipInterior() {
-        // the floor starts at origin and is rotated so that it becomes a plane on the x-axis
-        Material material = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
-        material.setColor("Color", ColorRGBA.Red);
+        // floor starts at origin and is rotated so that it becomes a plane on the x-axis
+        Material floorMaterial = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
+        floorMaterial.setColor(COLOR_PROP, ColorRGBA.Red);
 
-        Geometry geometry = new Geometry("floor", FLOOR);
-        geometry.setMaterial(material);
+        Geometry floor = new Geometry("floor", FLOOR_MESH);
+        floor.setMaterial(floorMaterial);
+        // rotate negative 90 degrees around the x-axis
+        floor.rotate(-FastMath.PI / 2, 0f, 0f);
 
-        // rotates the plane 90 degrees around the x-axis away from the initial camera
-        geometry.rotate(-FastMath.PI / 2, 0f, 0f);
+        rootNode.attachChild(floor);
 
-        rootNode.attachChild(geometry);
+        // walls
+        Material wallMaterial = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
+        wallMaterial.setColor(COLOR_PROP, ColorRGBA.Cyan);
 
-        // TODO: create walls
+        Geometry portWall = new Geometry("portWall", PORT_WALL);
+        portWall.setMaterial(wallMaterial);
+        // rotate 90 degrees around the y-axis
+        portWall.rotate(0f, FastMath.PI / 2, 0f);
+
+        rootNode.attachChild(portWall);
 
         // TODO: create ship terminals
     }
 
     private void initPlayer() {
         Material playerMaterial = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
-        playerMaterial.setColor("Color", ColorRGBA.Blue);
+        playerMaterial.setColor(COLOR_PROP, ColorRGBA.Blue);
 
         Box playerMesh = new Box(1f, 1f, 1f);
 
-        player = new Geometry("player", playerMesh);
+        player = new Geometry(PLAYER_ID, playerMesh);
         player.setMaterial(playerMaterial);
         player.setLocalTranslation(PLAYER_INITIAL_POSITION);
         // TODO: attach the cam to the player?
