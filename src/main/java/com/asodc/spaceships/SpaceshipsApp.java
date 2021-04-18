@@ -7,11 +7,14 @@ import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Spatial;
-import com.jme3.scene.shape.Box;
 
 public class SpaceshipsApp extends SimpleApplication {
-    private Geometry player;
     private Ship playerShip;
+    private Spatial player;
+    private Spatial helmConsole;
+    private Spatial portConsole;
+    private Spatial starboardConsole;
+
     private PointLight shipPointLight = new PointLight();
 
     private static final String COLOR_PROP = "Color";
@@ -26,14 +29,13 @@ public class SpaceshipsApp extends SimpleApplication {
         configureFlyCam();
         initShip();
         initShipInterior();
-        initShipTerminals();
+        initShipConsoles();
         initLighting();
         initPlayer();
     }
 
     @Override
     public void simpleUpdate(float tpf) {
-        // TODO: update stuff
         player.rotate(0f, tpf, 0f);
     }
 
@@ -55,8 +57,18 @@ public class SpaceshipsApp extends SimpleApplication {
         rootNode.attachChild(shipInterior);
     }
 
-    private void initShipTerminals() {
-        // TODO: import the various terminals that allow player interaction
+    private void initShipConsoles() {
+        helmConsole = assetManager.loadModel("console.obj");
+        portConsole = assetManager.loadModel("console.obj");
+        starboardConsole = assetManager.loadModel("console.obj");
+
+        helmConsole.setLocalTranslation(0f, 0f, -6f);
+        portConsole.setLocalTranslation(-4f, 0f, 0f);
+        starboardConsole.setLocalTranslation(4f, 0f, 0f);
+
+        rootNode.attachChild(helmConsole);
+        rootNode.attachChild(portConsole);
+        rootNode.attachChild(starboardConsole);
     }
 
     private void initLighting() {
@@ -71,9 +83,9 @@ public class SpaceshipsApp extends SimpleApplication {
     private void initPlayer() {
         Material playerMaterial = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
 
-        player = (Geometry) assetManager.loadModel("player.obj");
+        player = assetManager.loadModel("player.obj");
         player.setMaterial(playerMaterial);
-        player.setLocalTranslation(3f, 3f, 0f);
+        player.setLocalTranslation(0f, 2f, 0f);
 
         rootNode.attachChild(player);
     }
