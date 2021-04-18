@@ -33,6 +33,7 @@ public class SpaceshipsApp extends SimpleApplication {
     @Override
     public void simpleUpdate(float tpf) {
         // TODO: update stuff
+        player.rotate(0f, tpf, 0f);
     }
 
     public static void main(String... args) {
