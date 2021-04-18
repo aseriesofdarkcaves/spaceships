@@ -62,22 +62,18 @@ public class SpaceshipsApp extends SimpleApplication {
     private void initLighting() {
         shipPointLight = new PointLight();
         shipPointLight.setColor(ColorRGBA.White);
-        shipPointLight.setRadius(10f);
-        shipPointLight.setPosition(new Vector3f(0f, 1f, 0f));
+        shipPointLight.setRadius(100f);
+        shipPointLight.setPosition(new Vector3f(0f, 5f, 0f));
 
         rootNode.addLight(shipPointLight);
     }
 
     private void initPlayer() {
-        // TODO: create a player model in blender, export it to obj and import it here
         Material playerMaterial = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
-        playerMaterial.setColor(COLOR_PROP, ColorRGBA.Blue);
 
-        Box playerMesh = new Box(0.5f, 0.5f, 0.5f);
-
-        player = new Geometry(PLAYER_ID, playerMesh);
+        player = (Geometry) assetManager.loadModel("player.obj");
         player.setMaterial(playerMaterial);
-        // TODO: attach the cam to the player?
+        player.setLocalTranslation(3f, 3f, 0f);
 
         rootNode.attachChild(player);
     }
