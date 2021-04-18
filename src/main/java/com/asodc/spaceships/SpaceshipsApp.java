@@ -52,6 +52,8 @@ public class SpaceshipsApp extends SimpleApplication {
 
         rootNode.attachChild(floor);
 
+        // TODO: try import the blender intrepid-interior scene thing
+
         // left port wall
         Material portWallMaterial = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
         portWallMaterial.setColor(COLOR_PROP, ColorRGBA.Cyan);
