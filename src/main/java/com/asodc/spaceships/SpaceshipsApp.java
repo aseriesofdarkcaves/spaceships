@@ -1,7 +1,7 @@
 package com.asodc.spaceships;
 
 import com.jme3.app.SimpleApplication;
-import com.jme3.light.DirectionalLight;
+import com.jme3.light.PointLight;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
@@ -12,6 +12,7 @@ import com.jme3.scene.shape.Box;
 public class SpaceshipsApp extends SimpleApplication {
     private Geometry player;
     private Ship playerShip;
+    private PointLight shipPointLight = new PointLight();
 
     private static final String COLOR_PROP = "Color";
     private static final String PLAYER_ID = "player";
@@ -59,10 +60,12 @@ public class SpaceshipsApp extends SimpleApplication {
     }
 
     private void initLighting() {
-        DirectionalLight sun = new DirectionalLight();
-        sun.setColor(ColorRGBA.White);
-        sun.setDirection(new Vector3f(-0.5f, -0.5f, -0.5f));
-        rootNode.addLight(sun);
+        shipPointLight = new PointLight();
+        shipPointLight.setColor(ColorRGBA.White);
+        shipPointLight.setRadius(10f);
+        shipPointLight.setPosition(new Vector3f(0f, 1f, 0f));
+
+        rootNode.addLight(shipPointLight);
     }
 
     private void initPlayer() {
