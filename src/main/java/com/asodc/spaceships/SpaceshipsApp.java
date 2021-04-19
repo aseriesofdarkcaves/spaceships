@@ -44,6 +44,7 @@ public class SpaceshipsApp extends SimpleApplication {
 
     private void configureFlyCam() {
         flyCam.setMoveSpeed(10f);
+        cam.setLocation(new Vector3f(0f, 5f, 9f));
     }
 
     private void initShip() {
