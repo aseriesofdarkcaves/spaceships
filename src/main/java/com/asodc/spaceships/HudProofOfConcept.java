@@ -4,6 +4,10 @@ import com.jme3.app.SimpleApplication;
 import com.jme3.ui.Picture;
 
 public class HudProofOfConcept extends SimpleApplication {
+    public static void main(String... args) {
+        new HudProofOfConcept().start();
+    }
+
     @Override
     public void simpleInitApp() {
         configureFlyCam();
@@ -22,9 +26,5 @@ public class HudProofOfConcept extends SimpleApplication {
         picture.setPosition(settings.getWidth() / 4f, settings.getHeight() / 4f);
 
         guiNode.attachChild(picture);
-    }
-
-    public static void main(String... args) {
-        new HudProofOfConcept().start();
     }
 }
