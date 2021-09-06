@@ -10,7 +10,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jmonkey.version>3.3.2-stable</jmonkey.version>
+        <jmonkey.version>3.4.0-stable</jmonkey.version>
     </properties>
 
     <repositories>
