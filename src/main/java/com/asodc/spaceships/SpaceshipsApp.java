@@ -6,6 +6,7 @@ import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Spatial;
+import com.jme3.system.AppSettings;
 
 public class SpaceshipsApp extends SimpleApplication {
     private Ship playerShip;
@@ -39,7 +40,14 @@ public class SpaceshipsApp extends SimpleApplication {
     }
 
     public static void main(String... args) {
-        new SpaceshipsApp().start();
+        AppSettings appSettings = new AppSettings(true);
+        appSettings.setTitle("Spaceships");
+        appSettings.setResolution(1280, 720);
+
+        SpaceshipsApp app = new SpaceshipsApp();
+        app.setShowSettings(false);
+        app.setSettings(appSettings);
+        app.start();
     }
 
     private void configureFlyCam() {
