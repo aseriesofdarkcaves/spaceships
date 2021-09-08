@@ -3,7 +3,7 @@ package com.asodc.spaceships;
 import com.asodc.spaceships.module.ModuleConfiguration;
 
 /**
- * Fields and methods common to all ships.
+ * Base class that all ships should extend.
  */
 public abstract class Ship implements ModularShip {
     /**

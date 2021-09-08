@@ -3,6 +3,9 @@ package com.asodc.spaceships.module;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The configuration of a ship's modules.
+ */
 public class ModuleConfiguration {
     /**
      * A {@link List} of the ship's current {@link Module}s.

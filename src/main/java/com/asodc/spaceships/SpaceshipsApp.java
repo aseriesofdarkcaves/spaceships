@@ -8,15 +8,36 @@ import com.jme3.math.Vector3f;
 import com.jme3.scene.Spatial;
 import com.jme3.system.AppSettings;
 
+/**
+ * Spaceships application entry-point.
+ */
 public class SpaceshipsApp extends SimpleApplication {
+    /**
+     * The player's current ship.
+     */
     private Ship playerShip;
+    /**
+     * The player.
+     */
     private Spatial player;
+    /**
+     * The console at the front.
+     */
     private Spatial helmConsole;
+    /**
+     * The left console.
+     */
     private Spatial portConsole;
+    /**
+     * The right console.
+     */
     private Spatial starboardConsole;
-
+    /**
+     * The ship's interior lighting.
+     */
     private PointLight shipPointLight = new PointLight();
 
+    // TODO: figure out why I put these here (for reuse, but I currently don't use them for anything)
     private static final String COLOR_PROP = "Color";
     private static final String PLAYER_ID = "player";
 
@@ -36,6 +57,7 @@ public class SpaceshipsApp extends SimpleApplication {
 
     @Override
     public void simpleUpdate(float tpf) {
+        // TODO: implement the game loop
         player.rotate(0f, tpf, 0f);
     }
 
@@ -51,6 +73,7 @@ public class SpaceshipsApp extends SimpleApplication {
     }
 
     private void configureFlyCam() {
+        // TODO: remove the flycam and implement FPS movement for the player
         flyCam.setMoveSpeed(10f);
         cam.setLocation(new Vector3f(0f, 5f, 9f));
     }
